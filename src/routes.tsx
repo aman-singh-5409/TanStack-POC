@@ -8,6 +8,7 @@ import InfiniteQueries from "./pages/InfiniteQueries";
 import PaginatedQueries from "./pages/PaginatedQueries";
 import Mutations from "./pages/Mutations";
 import Prefetching from "./pages/Prefetching";
+import Home from "./pages/Home";
 
 interface IRoutes {
   path: string;
@@ -64,9 +65,15 @@ export const routes: IRoutes[] = [
   {
     path: "/",
     element: <MainLayout />,
-    children: sidebarTabs.map((tab) => ({
-      path: tab.path,
-      element: tab.element,
-    })),
+    children: [
+      ...sidebarTabs.map((tab) => ({
+        path: tab.path,
+        element: tab.element,
+      })),
+      {
+        path: "/",
+        element: <Home />,
+      },
+    ],
   },
 ];
